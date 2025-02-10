@@ -20,6 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1', allRoutes);
 
+app.get('/ping', (req, res) => {
+    return res.status(200).json({ message: 'pong' });
+})
+
 // Error-handling
 app.use((req, res, next) => {
     res.status(404).json({
