@@ -54,12 +54,9 @@ exports.downloadResume = async (req, res) => {
 };
 
 
-exports.getTodo = async (req, res) => {
+exports.getAllUsers = async (req, res) => {
   try {
-    const todos = await Todo.find({ userId: req.user._id.toString() })
-      .populate('userId', 'name _id')
-      .select('-__v');
-
+    const todos = await Todo.find();
     res
       .status(200)
       .json({ noOfTodo: todos.length, Todo: todos });
